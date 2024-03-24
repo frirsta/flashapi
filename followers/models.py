@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Followers(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='user')
+        User, on_delete=models.CASCADE, related_name='following')
     follower = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='follower')
 
