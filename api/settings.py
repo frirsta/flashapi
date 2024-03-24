@@ -49,7 +49,7 @@ JWT_AUTH_SAMESITE = 'None'
 
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'}
+    'USER_DETAILS_SERIALIZER': 'api.serializers.CurrentUserSerializer'}
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -64,6 +64,7 @@ ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
 ]
 
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
