@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, filters
 from .models import Profile
@@ -10,7 +9,7 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['user__username']
-    search_fields = ['bio', 'location']
+    search_fields = ['bio', 'location', 'user__username']
 
 
 
