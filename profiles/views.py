@@ -15,9 +15,10 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     filter_backends = [DjangoFilterBackend,
                        filters.SearchFilter, filters.OrderingFilter]
-    ordering_fields = ['post_count', 'follower_count', 'following_count']
+    ordering_fields = ['posts_count', 'follower_count', 'following_count']
     filterset_fields = ['user__username']
     search_fields = ['user__username']
+
 
 
 class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):

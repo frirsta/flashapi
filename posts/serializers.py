@@ -45,5 +45,5 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        no_update_fields = ['image']
-        fields = '__all__'
+        fields = ['id', 'author', 'caption', 'image',
+                  'date_posted', 'updated', 'owner', 'is_owner', 'comments_count', 'likes_count', 'likes_id', 'bookmarks_id', 'bookmarks_count', 'profile_id', 'profile_image']

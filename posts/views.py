@@ -18,7 +18,7 @@ class PostList(generics.ListCreateAPIView):
                        filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = ['created_at', 'likes_count',
                        'comments_count', 'bookmarks_count']
-    filterset_fields = ['owner__username']
+    filterset_fields = ['author__username']
     search_fields = ['caption', 'owner__username']
 
     def perform_create(self, serializer):
@@ -35,4 +35,4 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['caption', 'owner__username']
-    ordering_fields = ['created_at', 'likes_count',]
+    ordering_fields = ['created_at', 'likes_count', 'comments_count']
