@@ -65,10 +65,7 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    "*",
 
-]
 # Application definition
 
 INSTALLED_APPS = [
