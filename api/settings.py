@@ -65,6 +65,10 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://flashapp-9f1ef2d8a1e3.herokuapp.com",
+    "http://localhost:5173",
+]
 
 # Application definition
 
