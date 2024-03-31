@@ -29,7 +29,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication', 'rest_framework_simplejwt.authentication.JWTAuthentication',
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'rest_framework_simplejwt',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
