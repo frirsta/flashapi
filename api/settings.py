@@ -69,7 +69,7 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://flashapp-9f1ef2d8a1e3.herokuapp.com"
+    "https://flashapp-9f1ef2d8a1e3.herokuapp.com", "http://localhost:3000", "http://localhost:5173"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://flashapp-9f1ef2d8a1e3.herokuapp.com"
