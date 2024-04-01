@@ -8,13 +8,14 @@ defusedxml==0.7.1
 dj-database-url==2.1.0
 dj-rest-auth==5.0.2
 Django==5.0.3
-django-allauth>=0.61.1
+django-allauth==0.61.1
 django-clearcache==1.2.1
 django-cloudinary-storage==0.3.0
 django-cors-headers==4.3.1
 django-filter==24.1
 djangorestframework==3.15.1
-djangorestframework-jwt>=1.11.0,<2.0.0
+djangorestframework-jwt==1.11.0
+djangorestframework-simplejwt==5.3.1
 gunicorn==21.2.0
 idna==3.6
 oauthlib==3.2.2
@@ -24,7 +25,7 @@ psycopg==3.1.18
 psycopg-binary==3.1.18
 psycopg2-binary==2.9.9
 pycparser==2.21
-pyjwt>=2.4.0
+PyJWT==1.7.1
 python3-openid==3.2.0
 requests==2.31.0
 requests-oauthlib==2.0.0
