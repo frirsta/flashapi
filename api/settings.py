@@ -40,12 +40,11 @@ REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
     'rest_framework.renderers.JSONRenderer'
 ]
 
-
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'Lax'
+JWT_AUTH_SAMESITE = 'None'
 
 
 REST_AUTH_SERIALIZERS = {
@@ -59,17 +58,26 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = [
-    'flashapp-9f1ef2d8a1e3.herokuapp.com',
-    'localhost', '127.0.0.1',
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'),
+                 'localhost', '127.0.0.1']
+
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://flashapp-9f1ef2d8a1e3.herokuapp.com',
+
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://flashapp-9f1ef2d8a1e3.herokuapp.com"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
+    'clearcache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,6 +109,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -109,7 +118,6 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'
