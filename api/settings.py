@@ -61,17 +61,12 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     'flashapp-9f1ef2d8a1e3.herokuapp.com',
-    'localhost', '127.0.0.1',
+    'localhost', '127.0.0.1', 'https://flashapp-9f1ef2d8a1e3.herokuapp.com',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'https://flashapp-9f1ef2d8a1e3.herokuapp.com',
-
-]
+CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
