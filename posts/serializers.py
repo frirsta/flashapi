@@ -32,18 +32,23 @@ class PostSerializer(serializers.ModelSerializer):
     def get_likes_id(self, obj):
         request = self.context.get('request')
         try:
-            return Likes.objects.get(owner=request.user, post=obj).id
-        except:
+            like_instance = Likes.objects.get(owner=request.user, post=obj)
+            return like_instance.id
+        except Likes.DoesNotExist:
             return None
 
     def get_bookmarks_id(self, obj):
         request = self.context.get('request')
         try:
-            return Bookmarks.objects.get(owner=request.user, post=obj).id
-        except:
+            bookmark_instance = Bookmarks.objects.get(
+                owner=request.user, post=obj)
+            return bookmark_instance.id
+        except Bookmarks.DoesNotExist:
             return None
 
     class Meta:
         model = Post
-        fields = ['id', 'author', 'caption', 'image',
-                  'date_posted', 'updated', 'owner', 'is_owner', 'comments_count', 'likes_count', 'likes_id', 'bookmarks_id', 'bookmarks_count', 'profile_id', 'profile_image']
+        fields = ['id', 'author', 'caption', 'image', 'date_posted', 'updated', 'owner',
+                  'is_owner', 'comments_count', 'likes_count', 'likes_id', 'bookmarks_id',
+                  'bookmarks_count', 'profile_id', 'profile_image']
+        extra_kwargs = {"author": {"write_only": True}}

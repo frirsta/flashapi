@@ -6,7 +6,7 @@ from .models import Post
 from .serializers import PostSerializer
 
 
-class PostList(generics.ListCreateAPIView):
+class PostListView(generics.ListCreateAPIView):
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comments', distinct=True),
@@ -21,11 +21,16 @@ class PostList(generics.ListCreateAPIView):
     filterset_fields = ['author__username']
     search_fields = ['caption', 'owner__username']
 
+    def get_queryset(self):
+        user = self.request.user
+        return Post.objects.filter(author=user)
+    
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+
+class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comments', distinct=True),

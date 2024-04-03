@@ -1,10 +1,10 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
-from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     city = models.CharField(max_length=100, blank=True)
     avatar = models.ImageField(
@@ -25,8 +25,11 @@ class Profile(models.Model):
 
 
 def create_profile(sender, instance, created, **kwargs):
+    """
+    Create a profile for the user when a new user is created.
+    """
     if created:
         Profile.objects.create(user=instance)
 
 
-post_save.connect(create_profile, sender=User)
+post_save.connect(create_profile, sender=get_user_model())
